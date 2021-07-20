@@ -14,11 +14,12 @@ import { TaskService } from '../service/task.service';
   styleUrls: ['./kanban.component.css']
 })
 export class KanbanComponent implements OnInit {
-  
+
   kanban: Kanban;
   todos: Task[] = [];
   inprogress: Task[] = [];
   dones: Task[] = [];
+  testing: Task[] = [];
 
   constructor(
     private kanbanService: KanbanService,
@@ -72,8 +73,9 @@ export class KanbanComponent implements OnInit {
     this.todos = kanban.tasks.filter(t=>t.status==='TODO');
     this.inprogress = kanban.tasks.filter(t=>t.status==='INPROGRESS');
     this.dones = kanban.tasks.filter(t=>t.status==='DONE');
+    this.testing = kanban.tasks.filter(t=>t.status==='TESTING');
   }
-  
+
   private updateTaskStatusAfterDragDrop(event: CdkDragDrop<string[], string[]>) {
     let taskId = event.item.element.nativeElement.id;
     let containerId = event.container.id;
@@ -90,8 +92,10 @@ export class KanbanComponent implements OnInit {
       task.status = 'TODO'
     } else if (containerId === 'inpro'){
       task.status = 'INPROGRESS'
-    } else {
+    } else if  (containerId === 'done'){
       task.status = 'DONE'
+    } else {
+      task.status = 'TESTING'
     }
     this.taskService.updateTask(task).subscribe();
   }
