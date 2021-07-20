@@ -5,11 +5,14 @@
   <div>
     <button mat-raised-button (click)="openDialogForNewKanban()">+ Create Kanban</button>
   </div>
-  
+
   <div class="main-card">
     <mat-nav-list>
-      <a mat-list-item *ngFor="let kanban of kanbanList" routerLink="/kanbans/{{kanban.id}}"> 
-        <p class="kanban-title">{{kanban.title}}</p>
+      <a mat-list-item *ngFor="let kanban of kanbanList">
+        <div class="kanban_items"  routerLink="/kanbans/{{kanban.id}}">
+        <span class="kanban-title">{{kanban.title}}</span>
+        <span class="kanban-date">{{kanban.kanbanDate  |  date:'MM/dd/yyyy'}}</span>
+        </div>
       </a>
     </mat-nav-list>
   </div>

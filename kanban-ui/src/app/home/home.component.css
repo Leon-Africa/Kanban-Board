@@ -2,11 +2,24 @@
     margin-top: 20px;
     background-color: #949AAC;
     border-radius: 15px;
-    padding-bottom: 8px; 
+    padding-bottom: 8px;
 }
 
 .kanban-title {
     font-weight: semi-bold;
     color: white;
     font-family: 'Open Sans', sans-serif;
+}
+
+.kanban-date
+{
+  margin-left: 20px;
+  font-weight: semi-bold;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.kanban_items
+{
+  width:777px;
 }

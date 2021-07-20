@@ -9,9 +9,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+
 
 @Service
 @RequiredArgsConstructor
@@ -68,7 +72,12 @@ public class KanbanServiceImpl implements KanbanService {
 
     private Kanban convertDTOToKanban(KanbanDTO kanbanDTO){
         Kanban kanban = new Kanban();
+
+        //Setup to get date
+        LocalDate now = LocalDate.now();
+        kanban.setKanbanDate(now);
         kanban.setTitle(kanbanDTO.getTitle());
+
         return kanban;
     }
 
