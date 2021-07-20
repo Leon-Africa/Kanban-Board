@@ -30,7 +30,7 @@ public class SwaggerConfig {
         return new ApiInfo(
                 "Kanban REST API",
                 "This is a REST API of Kanban REST API, where you can get/add/remove/modify Kanban board and its task.",
-                "v1",
+                "v1", "", null,  "", null
         );
     }
 }
