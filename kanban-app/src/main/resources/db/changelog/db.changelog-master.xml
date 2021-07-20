@@ -42,7 +42,7 @@
         <comment>Add status column to task table</comment>
     </changeSet>
 
-    <changeSet id="4" author="Leon">
+    <changeSet id="5" author="Leon">
         <sqlFile path="05_kanban_column.sql"
                  relativeToChangelogFile="true"
                  splitStatements="true"
