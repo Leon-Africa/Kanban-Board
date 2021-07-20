@@ -7,6 +7,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
+import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -43,4 +46,8 @@ public class Kanban {
         }
         tasks.add(task);
     }
+
+    @ApiModelProperty(position = 4)
+    @Column(name = "kanban_date")
+    private LocalDate kanbanDate;
 }
