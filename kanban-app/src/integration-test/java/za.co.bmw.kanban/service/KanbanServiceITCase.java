@@ -1,5 +1,7 @@
 package za.co.bmw.kanban.service;
 
+import jdk.vm.ci.meta.Local;
+import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 import za.co.bmw.kanban.config.H2DatabaseConfig4Test;
 import za.co.bmw.kanban.model.Kanban;
 import za.co.bmw.kanban.model.KanbanDTO;
@@ -12,6 +14,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
+import java.time.LocalDate;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -33,10 +36,12 @@ public class KanbanServiceITCase {
 
     @Test
     public void whenNewKanbanCreated_thenKanbanIsSavedInDb() {
+
         //given
         KanbanDTO kanbanDTO = KanbanDTO.builder()
                                     .title("Test Kanban")
-                                .build();
+                                    .kanbanDate((LocalDate.now()))
+                                    .build();
 
         //when
         kanbanService.saveNewKanban(kanbanDTO);
@@ -46,5 +51,6 @@ public class KanbanServiceITCase {
 
         assertNotNull(kanbans.get(0));
         assertEquals("Test Kanban", kanbans.get(0).getTitle());
+        assertEquals(LocalDate.now(), kanbans.get(0).getKanbanDate());
     }
 }

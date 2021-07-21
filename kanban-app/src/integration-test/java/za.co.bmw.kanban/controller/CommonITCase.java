@@ -46,6 +46,7 @@ public class CommonITCase {
     protected KanbanDTO convertKanbanToDTO(Kanban kanban) {
         return new KanbanDTO().builder()
                 .title(kanban.getTitle())
+                .kanbanDate(kanban.getKanbanDate())
                 .build();
     }
 

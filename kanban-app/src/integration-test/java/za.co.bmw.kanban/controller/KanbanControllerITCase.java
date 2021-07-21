@@ -77,6 +77,7 @@ public class KanbanControllerITCase extends CommonITCase {
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(kanban.getId(), response.getBody().getId());
         assertEquals(kanban.getTitle(), response.getBody().getTitle());
+        assertEquals(kanban.getTitle(), response.getBody().getKanbanDate());
     }
 
     @Test
@@ -117,6 +118,7 @@ public class KanbanControllerITCase extends CommonITCase {
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(kanban.getId(), response.getBody().getId());
         assertEquals(kanban.getTitle(), response.getBody().getTitle());
+        assertEquals(kanban.getTitle(), response.getBody().getKanbanDate());
     }
 
     @Test
@@ -139,10 +141,12 @@ public class KanbanControllerITCase extends CommonITCase {
         Kanban responseKanban = response.getBody();
         assertNotNull(responseKanban.getId());
         assertEquals(kanban.getTitle(), responseKanban.getTitle());
+        assertEquals(kanban.getKanbanDate(), responseKanban.getKanbanDate());
 
             // check Kanban saved in db
         Kanban savedKanban = findKanbanInDbById(responseKanban.getId()).get();
         assertEquals(kanban.getTitle(), savedKanban.getTitle());
+        assertEquals(kanban.getKanbanDate(), savedKanban.getKanbanDate());
     }
 
     @Test
@@ -192,6 +196,8 @@ public class KanbanControllerITCase extends CommonITCase {
         //given
         Kanban kanban = saveSingleRandomKanban();
         kanban.setTitle(kanban.getTitle() + " Updated");
+        kanban.setTitle(kanban.getKanbanDate() + " 07/21/2021");
+
 
         //when
         ResponseEntity<Kanban> response = this.restTemplate.exchange(
@@ -203,6 +209,7 @@ public class KanbanControllerITCase extends CommonITCase {
         //then
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(kanban.getTitle(), findKanbanInDbById(kanban.getId()).get().getTitle());
+        assertEquals(kanban.getTitle(), findKanbanInDbById(kanban.getId()).get().getKanbanDate());
     }
 
     @Test
