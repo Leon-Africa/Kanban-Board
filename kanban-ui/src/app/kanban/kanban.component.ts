@@ -7,6 +7,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
 import { TaskService } from '../service/task.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-kanban',
@@ -25,7 +26,8 @@ export class KanbanComponent implements OnInit {
     private kanbanService: KanbanService,
     private taskService: TaskService,
     private route: ActivatedRoute,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -56,6 +58,10 @@ export class KanbanComponent implements OnInit {
         this.openDialog('Update Task', response);
       }
     );
+  }
+
+  navigateToLandingPage(): void {
+    this.router.navigate(['/']);
   }
 
   private getKanban(): void {
