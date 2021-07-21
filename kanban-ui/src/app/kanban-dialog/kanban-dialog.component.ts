@@ -2,7 +2,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { KanbanService } from '../service/kanban-service.service';
-import { Kanban } from '../model/kanban/kanban';
 
 @Component({
   selector: 'app-kanban-dialog',
@@ -18,7 +17,7 @@ export class KanbanDialogComponent implements OnInit {
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<KanbanDialogComponent>,
     @Inject(MAT_DIALOG_DATA) data,
-    private kanbanService: KanbanService) { 
+    private kanbanService: KanbanService) {
 
       this.form = fb.group({
         title: [this.title, Validators.required]
@@ -30,7 +29,7 @@ export class KanbanDialogComponent implements OnInit {
 
   close() {
     this.dialogRef.close();
-  } 
+  }
 
   save() {
     this.title = this.form.get('title').value;

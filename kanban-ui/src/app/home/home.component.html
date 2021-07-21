@@ -13,6 +13,9 @@
         <span class="kanban-title">{{kanban.title}}</span>
         <span class="kanban-date">{{kanban.kanbanDate  |  date:'MM/dd/yyyy'}}</span>
         </div>
+        <div>
+          <button mat-raised-button (click)="deleteKanbanBoard(kanban.id)">Delete</button>
+        </div>
       </a>
     </mat-nav-list>
   </div>
