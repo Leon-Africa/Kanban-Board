@@ -1,3 +1,5 @@
+![Build Status](https://travis-ci.com/Leon-Africa/Kanban-Board.svg?branch=develop)
+
 ## Kanban Application
 
 This is a simple implementation of a Kanban Board, a tool that helps visualize and manage work. Originally it was first created in Toyota automotive, but nowadays it's widely used in software development.
