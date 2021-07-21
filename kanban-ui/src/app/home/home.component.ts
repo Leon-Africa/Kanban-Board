@@ -31,13 +31,28 @@ export class HomeComponent implements OnInit {
     this.dialog.open(KanbanDialogComponent, dialogConfig)
   }
 
+
   private retrieveAllKanbanBoards(): void {
     this.kanbanService.retrieveAllKanbanBoards().subscribe(
 
       response => {
+        // @ts-ignore
         this.kanbanList = response;
       }
     )
+  }
+
+  deleteKanbanBoard(id:String): void {
+    this.kanbanService.removeKanbanById(id).subscribe(
+
+      response => {
+        // @ts-ignore
+        this.kanbanList = response;
+      }
+    )
+
+    location.reload();
+
   }
 
 }
